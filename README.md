@@ -1,16 +1,16 @@
-# 🛣️ Pothole Detection System
+# 🛣️ AI Pothole Detection System
 
-An AI-powered pothole detection system using YOLO and Streamlit.
+A Streamlit-based web application that uses YOLOv8 for object detection in images and videos.
 
 ## Features
-- Detect potholes from images
-- Detect potholes from videos
-- Real-time bounding box visualization
+- Upload images for detection
+- Upload videos for real-time processing
+- Bounding box visualization
 
 ## Tech Stack
-- YOLO (Ultralytics)
+- YOLOv8 (Ultralytics)
 - Streamlit
 - OpenCV
 
-## How to Run
+## Run Locally
 streamlit run app.py

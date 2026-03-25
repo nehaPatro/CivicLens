@@ -9,10 +9,9 @@ st.set_page_config(page_title="Pothole Detection", layout="wide")
 
 st.title("🛣️ AI Pothole Detection System")
 
-# Load model
-model = YOLO("best.pt")
+# Load YOLOv8 model (auto-downloads)
+model = YOLO("yolov8n.pt")
 
-# Choose input type
 option = st.radio("Select Input Type", ["Image", "Video"])
 
 # ================= IMAGE =================
@@ -23,7 +22,7 @@ if option == "Image":
         image = Image.open(uploaded_file)
         st.image(image, caption="Uploaded Image", use_column_width=True)
 
-        if st.button("Detect Potholes"):
+        if st.button("Detect Objects"):
             img_array = np.array(image)
 
             results = model(img_array)
@@ -32,8 +31,7 @@ if option == "Image":
 
             st.image(result_img, caption="Detection Result", use_column_width=True)
 
-            st.success(f"Potholes detected: {len(results[0].boxes)}")
-
+            st.success(f"Objects detected: {len(results[0].boxes)}")
 
 # ================= VIDEO =================
 elif option == "Video":
@@ -47,7 +45,6 @@ elif option == "Video":
 
         if st.button("Process Video"):
             cap = cv2.VideoCapture(tfile.name)
-
             stframe = st.empty()
 
             while cap.isOpened():
